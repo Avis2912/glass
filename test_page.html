@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glass Notification Test Page</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .test-section {
+            background: #f5f5f5;
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+        }
+
+        .highlight {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: bold;
+        }
+
+        .instruction {
+            background: #e8f4fd;
+            border-left: 4px solid #007acc;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .code {
+            background: #f8f8f8;
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 6px;
+            font-family: 'Monaco', 'Menlo', monospace;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <h1>🪟 Glass Notification Test Page</h1>
+
+    <div class="instruction">
+        <h3>Testing Your Native macOS App</h3>
+        <p>If your Glass Notification app is running, select any text below to see the beautiful glass notification appear!</p>
+    </div>
+
+    <div class="test-section">
+        <h2>Sample Text for Selection</h2>
+        <p>
+            This is a sample paragraph of text that you can select to test the Glass Notification app.
+            Simply <span class="highlight">click and drag</span> to select any portion of this text,
+            and you should see a beautiful translucent notification appear in the bottom-right corner of your screen.
+        </p>
+
+        <p>
+            The notification will display a preview of the selected text and automatically disappear after 3 seconds.
+            Try selecting different lengths of text to see how the notification handles truncation for longer selections.
+        </p>
+
+        <p>
+            You can also try selecting text from:
+        </p>
+        <ul>
+            <li>This bullet point</li>
+            <li>Another bullet point with more text to see how it wraps</li>
+            <li>A third option to give you plenty of choices</li>
+        </ul>
+    </div>
+
+    <div class="test-section">
+        <h2>Technical Details</h2>
+        <p>
+            The Glass Notification app uses:
+        </p>
+        <ul>
+            <li><strong>macOS Accessibility APIs</strong> to detect text selection system-wide</li>
+            <li><strong>SwiftUI</strong> for the beautiful glassmorphic interface</li>
+            <li><strong>NSWindow</strong> with custom styling for the translucent effect</li>
+            <li><strong>Smooth animations</strong> for fade-in and fade-out effects</li>
+        </ul>
+    </div>
+
+    <div class="instruction">
+        <h3>Troubleshooting</h3>
+        <p>If notifications don't appear:</p>
+        <ol>
+            <li>Make sure the app is running (check your menu bar for the speech bubble icon)</li>
+            <li>Grant accessibility permissions in System Preferences → Security & Privacy → Privacy → Accessibility</li>
+            <li>Try selecting text in different applications like Safari, Notes, or Terminal</li>
+            <li>Restart the app if issues persist</li>
+        </ol>
+    </div>
+
+    <div class="code">
+        <strong>To build the app yourself:</strong><br>
+        cd GlassNotification<br>
+        ./build.sh<br>
+        ./create_app_bundle.sh
+    </div>
+</body>
+</html>
+

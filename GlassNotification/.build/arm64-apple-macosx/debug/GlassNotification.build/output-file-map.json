@@ -1,0 +1,11 @@
+{
+  "": {
+    "swift-dependencies": "/Users/avi/Desktop/glass/GlassNotification/.build/arm64-apple-macosx/debug/GlassNotification.build/master.swiftdeps"
+  },
+  "/Users/avi/Desktop/glass/GlassNotification/GlassNotification/SimpleAppUpdated.swift": {
+    "dependencies": "/Users/avi/Desktop/glass/GlassNotification/.build/arm64-apple-macosx/debug/GlassNotification.build/SimpleAppUpdated.d",
+    "object": "/Users/avi/Desktop/glass/GlassNotification/.build/arm64-apple-macosx/debug/GlassNotification.build/SimpleAppUpdated.swift.o",
+    "swiftmodule": "/Users/avi/Desktop/glass/GlassNotification/.build/arm64-apple-macosx/debug/GlassNotification.build/SimpleAppUpdated~partial.swiftmodule",
+    "swift-dependencies": "/Users/avi/Desktop/glass/GlassNotification/.build/arm64-apple-macosx/debug/GlassNotification.build/SimpleAppUpdated.swiftdeps"
+  }
+}

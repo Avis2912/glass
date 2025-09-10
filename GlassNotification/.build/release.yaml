@@ -1,0 +1,66 @@
+client:
+  name: basic
+  file-system: device-agnostic
+tools: {}
+targets:
+  "GlassNotification-arm64-apple-macosx15.0-release.exe": ["<GlassNotification-arm64-apple-macosx15.0-release.exe>"]
+  "GlassNotification-arm64-apple-macosx15.0-release.module": ["<GlassNotification-arm64-apple-macosx15.0-release.module>"]
+  "PackageStructure": ["<PackageStructure>"]
+  "main": ["<GlassNotification-arm64-apple-macosx15.0-release.exe>","<GlassNotification-arm64-apple-macosx15.0-release.module>"]
+  "test": ["<GlassNotification-arm64-apple-macosx15.0-release.exe>","<GlassNotification-arm64-apple-macosx15.0-release.module>"]
+default: "main"
+nodes:
+  "/Users/avi/Desktop/glass/GlassNotification/GlassNotification/":
+    is-directory-structure: true
+    content-exclusion-patterns: [".git",".build"]
+commands:
+  "/Users/avi/Desktop/glass/GlassNotification/.build/arm64-apple-macosx/release/GlassNotification.build/sources":
+    tool: write-auxiliary-file
+    inputs: ["<sources-file-list>","/Users/avi/Desktop/glass/GlassNotification/GlassNotification/AppDelegate.swift","/Users/avi/Desktop/glass/GlassNotification/GlassNotification/GlassNotificationApp.swift","/Users/avi/Desktop/glass/GlassNotification/GlassNotification/NotificationWindow.swift"]
+    outputs: ["/Users/avi/Desktop/glass/GlassNotification/.build/arm64-apple-macosx/release/GlassNotification.build/sources"]
+    description: "Write auxiliary file /Users/avi/Desktop/glass/GlassNotification/.build/arm64-apple-macosx/release/GlassNotification.build/sources"
+
+  "/Users/avi/Desktop/glass/GlassNotification/.build/arm64-apple-macosx/release/GlassNotification.product/Objects.LinkFileList":
+    tool: write-auxiliary-file
+    inputs: ["<link-file-list>","/Users/avi/Desktop/glass/GlassNotification/.build/arm64-apple-macosx/release/GlassNotification.build/AppDelegate.swift.o","/Users/avi/Desktop/glass/GlassNotification/.build/arm64-apple-macosx/release/GlassNotification.build/GlassNotificationApp.swift.o","/Users/avi/Desktop/glass/GlassNotification/.build/arm64-apple-macosx/release/GlassNotification.build/NotificationWindow.swift.o"]
+    outputs: ["/Users/avi/Desktop/glass/GlassNotification/.build/arm64-apple-macosx/release/GlassNotification.product/Objects.LinkFileList"]
+    description: "Write auxiliary file /Users/avi/Desktop/glass/GlassNotification/.build/arm64-apple-macosx/release/GlassNotification.product/Objects.LinkFileList"
+
+  "/Users/avi/Desktop/glass/GlassNotification/.build/arm64-apple-macosx/release/swift-version--1AB21518FC5DEDBE.txt":
+    tool: write-auxiliary-file
+    inputs: ["<swift-get-version>","/Library/Developer/CommandLineTools/usr/bin/swiftc"]
+    outputs: ["/Users/avi/Desktop/glass/GlassNotification/.build/arm64-apple-macosx/release/swift-version--1AB21518FC5DEDBE.txt"]
+    always-out-of-date: "true"
+    description: "Write auxiliary file /Users/avi/Desktop/glass/GlassNotification/.build/arm64-apple-macosx/release/swift-version--1AB21518FC5DEDBE.txt"
+
+  "<GlassNotification-arm64-apple-macosx15.0-release.exe>":
+    tool: phony
+    inputs: ["/Users/avi/Desktop/glass/GlassNotification/.build/arm64-apple-macosx/release/GlassNotification"]
+    outputs: ["<GlassNotification-arm64-apple-macosx15.0-release.exe>"]
+
+  "<GlassNotification-arm64-apple-macosx15.0-release.module>":
+    tool: phony
+    inputs: ["/Users/avi/Desktop/glass/GlassNotification/.build/arm64-apple-macosx/release/GlassNotification.build/AppDelegate.swift.o","/Users/avi/Desktop/glass/GlassNotification/.build/arm64-apple-macosx/release/GlassNotification.build/GlassNotificationApp.swift.o","/Users/avi/Desktop/glass/GlassNotification/.build/arm64-apple-macosx/release/GlassNotification.build/NotificationWindow.swift.o","/Users/avi/Desktop/glass/GlassNotification/.build/arm64-apple-macosx/release/Modules/GlassNotification.swiftmodule"]
+    outputs: ["<GlassNotification-arm64-apple-macosx15.0-release.module>"]
+
+  "C.GlassNotification-arm64-apple-macosx15.0-release.exe":
+    tool: shell
+    inputs: ["/Users/avi/Desktop/glass/GlassNotification/.build/arm64-apple-macosx/release/GlassNotification.build/AppDelegate.swift.o","/Users/avi/Desktop/glass/GlassNotification/.build/arm64-apple-macosx/release/GlassNotification.build/GlassNotificationApp.swift.o","/Users/avi/Desktop/glass/GlassNotification/.build/arm64-apple-macosx/release/GlassNotification.build/NotificationWindow.swift.o","/Users/avi/Desktop/glass/GlassNotification/.build/arm64-apple-macosx/release/GlassNotification.product/Objects.LinkFileList"]
+    outputs: ["/Users/avi/Desktop/glass/GlassNotification/.build/arm64-apple-macosx/release/GlassNotification"]
+    description: "Linking ./.build/arm64-apple-macosx/release/GlassNotification"
+    args: ["/Library/Developer/CommandLineTools/usr/bin/swiftc","-L","/Users/avi/Desktop/glass/GlassNotification/.build/arm64-apple-macosx/release","-o","/Users/avi/Desktop/glass/GlassNotification/.build/arm64-apple-macosx/release/GlassNotification","-module-name","GlassNotification","-Xlinker","-no_warn_duplicate_libraries","-emit-executable","-Xlinker","-dead_strip","-Xlinker","-alias","-Xlinker","_GlassNotification_main","-Xlinker","_main","-Xlinker","-rpath","-Xlinker","@loader_path","@/Users/avi/Desktop/glass/GlassNotification/.build/arm64-apple-macosx/release/GlassNotification.product/Objects.LinkFileList","-target","arm64-apple-macosx12.0","-F","/Library/Developer/CommandLineTools/Library/Developer/Frameworks","-sdk","/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk","-g","-Xlinker","-rpath","-Xlinker","/Library/Developer/CommandLineTools/Library/Developer/Frameworks"]
+
+  "C.GlassNotification-arm64-apple-macosx15.0-release.module":
+    tool: shell
+    inputs: ["/Users/avi/Desktop/glass/GlassNotification/GlassNotification/AppDelegate.swift","/Users/avi/Desktop/glass/GlassNotification/GlassNotification/GlassNotificationApp.swift","/Users/avi/Desktop/glass/GlassNotification/GlassNotification/NotificationWindow.swift","/Users/avi/Desktop/glass/GlassNotification/.build/arm64-apple-macosx/release/swift-version--1AB21518FC5DEDBE.txt","/Users/avi/Desktop/glass/GlassNotification/.build/arm64-apple-macosx/release/GlassNotification.build/sources"]
+    outputs: ["/Users/avi/Desktop/glass/GlassNotification/.build/arm64-apple-macosx/release/GlassNotification.build/AppDelegate.swift.o","/Users/avi/Desktop/glass/GlassNotification/.build/arm64-apple-macosx/release/GlassNotification.build/GlassNotificationApp.swift.o","/Users/avi/Desktop/glass/GlassNotification/.build/arm64-apple-macosx/release/GlassNotification.build/NotificationWindow.swift.o","/Users/avi/Desktop/glass/GlassNotification/.build/arm64-apple-macosx/release/Modules/GlassNotification.swiftmodule"]
+    description: "Compiling Swift Module 'GlassNotification' (3 sources)"
+    args: ["/Library/Developer/CommandLineTools/usr/bin/swiftc","-module-name","GlassNotification","-emit-dependencies","-emit-module","-emit-module-path","/Users/avi/Desktop/glass/GlassNotification/.build/arm64-apple-macosx/release/Modules/GlassNotification.swiftmodule","-output-file-map","/Users/avi/Desktop/glass/GlassNotification/.build/arm64-apple-macosx/release/GlassNotification.build/output-file-map.json","-whole-module-optimization","-num-threads","10","-c","@/Users/avi/Desktop/glass/GlassNotification/.build/arm64-apple-macosx/release/GlassNotification.build/sources","-I","/Users/avi/Desktop/glass/GlassNotification/.build/arm64-apple-macosx/release/Modules","-target","arm64-apple-macosx12.0","-O","-j10","-DSWIFT_PACKAGE","-module-cache-path","/Users/avi/Desktop/glass/GlassNotification/.build/arm64-apple-macosx/release/ModuleCache","-parseable-output","-Xfrontend","-entry-point-function-name","-Xfrontend","GlassNotification_main","-color-diagnostics","-swift-version","5","-F","/Library/Developer/CommandLineTools/Library/Developer/Frameworks","-sdk","/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk","-g","-Xcc","-isysroot","-Xcc","/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk","-Xcc","-fPIC","-Xcc","-g","-package-name","glassnotification"]
+
+  "PackageStructure":
+    tool: package-structure-tool
+    inputs: ["/Users/avi/Desktop/glass/GlassNotification/GlassNotification/","/Users/avi/Desktop/glass/GlassNotification/Package.swift","/Users/avi/Desktop/glass/GlassNotification/Package.resolved"]
+    outputs: ["<PackageStructure>"]
+    description: "Planning build"
+    allow-missing-inputs: true
+
